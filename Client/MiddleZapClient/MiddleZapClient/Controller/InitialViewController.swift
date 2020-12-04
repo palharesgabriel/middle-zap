@@ -1,9 +1,9 @@
 //
 //  InitialViewController.swift
-//  Middlezap
+//  MiddleZapClient
 //
-//  Created by Matheus Damasceno.
-//  Copyright © 2020 Matheus Damasceno. All rights reserved.
+//  Created by Gabriel Palhares on 03/12/20.
+//  Copyright © 2020 Gabriel Palhares. All rights reserved.
 //
 
 import UIKit
@@ -71,7 +71,7 @@ class InitialViewController: UIViewController, ServerDelegate {
         button.addTarget(self, action: #selector(conectar), for: .touchUpInside)
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = #colorLiteral(red: 0.1957894266, green: 0.1946322322, blue: 0.196683228, alpha: 1)
@@ -123,6 +123,4 @@ class InitialViewController: UIViewController, ServerDelegate {
             
         ])
     }
-    
-
 }

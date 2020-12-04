@@ -1,0 +1,403 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AB058B8F2579C5ED0009CBA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058B8E2579C5ED0009CBA1 /* AppDelegate.swift */; };
+		AB058B932579C5ED0009CBA1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058B922579C5ED0009CBA1 /* ViewController.swift */; };
+		AB058B982579C5F00009CBA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB058B972579C5F00009CBA1 /* Assets.xcassets */; };
+		AB058B9B2579C5F00009CBA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB058B992579C5F00009CBA1 /* LaunchScreen.storyboard */; };
+		AB058BA62579C7ED0009CBA1 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058BA52579C7ED0009CBA1 /* InitialViewController.swift */; };
+		AB058BA82579C83C0009CBA1 /* ContatosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058BA72579C83C0009CBA1 /* ContatosViewController.swift */; };
+		AB058BAA2579C8730009CBA1 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058BA92579C8730009CBA1 /* ChatViewController.swift */; };
+		AB058BAC2579C8A50009CBA1 /* Contato.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058BAB2579C8A50009CBA1 /* Contato.swift */; };
+		AB058BAE2579C8BF0009CBA1 /* Mensagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058BAD2579C8BF0009CBA1 /* Mensagem.swift */; };
+		AB058BB12579C8F10009CBA1 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058BB02579C8F10009CBA1 /* UIView + Extensions.swift */; };
+		AB058BB42579C9310009CBA1 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058BB32579C9310009CBA1 /* ServerManager.swift */; };
+		AB058BB62579C9730009CBA1 /* ContatoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058BB52579C9730009CBA1 /* ContatoCell.swift */; };
+		AB058BB82579C9920009CBA1 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058BB72579C9920009CBA1 /* MessageCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AB058B8B2579C5ED0009CBA1 /* MiddleZapClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiddleZapClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB058B8E2579C5ED0009CBA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AB058B922579C5ED0009CBA1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AB058B972579C5F00009CBA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AB058B9A2579C5F00009CBA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AB058B9C2579C5F00009CBA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB058BA52579C7ED0009CBA1 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		AB058BA72579C83C0009CBA1 /* ContatosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContatosViewController.swift; sourceTree = "<group>"; };
+		AB058BA92579C8730009CBA1 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		AB058BAB2579C8A50009CBA1 /* Contato.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contato.swift; sourceTree = "<group>"; };
+		AB058BAD2579C8BF0009CBA1 /* Mensagem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mensagem.swift; sourceTree = "<group>"; };
+		AB058BB02579C8F10009CBA1 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
+		AB058BB32579C9310009CBA1 /* ServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
+		AB058BB52579C9730009CBA1 /* ContatoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContatoCell.swift; sourceTree = "<group>"; };
+		AB058BB72579C9920009CBA1 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AB058B882579C5ED0009CBA1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AB058B822579C5ED0009CBA1 = {
+			isa = PBXGroup;
+			children = (
+				AB058B8D2579C5ED0009CBA1 /* MiddleZapClient */,
+				AB058B8C2579C5ED0009CBA1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AB058B8C2579C5ED0009CBA1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB058B8B2579C5ED0009CBA1 /* MiddleZapClient.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AB058B8D2579C5ED0009CBA1 /* MiddleZapClient */ = {
+			isa = PBXGroup;
+			children = (
+				AB058BB22579C91F0009CBA1 /* Service */,
+				AB058BAF2579C8DF0009CBA1 /* Extensions */,
+				AB058BA42579C7CD0009CBA1 /* Model */,
+				AB058BA32579C7BA0009CBA1 /* View */,
+				AB058BA22579C77F0009CBA1 /* Controller */,
+				AB058B8E2579C5ED0009CBA1 /* AppDelegate.swift */,
+				AB058B922579C5ED0009CBA1 /* ViewController.swift */,
+				AB058B972579C5F00009CBA1 /* Assets.xcassets */,
+				AB058B992579C5F00009CBA1 /* LaunchScreen.storyboard */,
+				AB058B9C2579C5F00009CBA1 /* Info.plist */,
+			);
+			path = MiddleZapClient;
+			sourceTree = "<group>";
+		};
+		AB058BA22579C77F0009CBA1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AB058BA52579C7ED0009CBA1 /* InitialViewController.swift */,
+				AB058BA72579C83C0009CBA1 /* ContatosViewController.swift */,
+				AB058BA92579C8730009CBA1 /* ChatViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AB058BA32579C7BA0009CBA1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB058BB52579C9730009CBA1 /* ContatoCell.swift */,
+				AB058BB72579C9920009CBA1 /* MessageCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB058BA42579C7CD0009CBA1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB058BAB2579C8A50009CBA1 /* Contato.swift */,
+				AB058BAD2579C8BF0009CBA1 /* Mensagem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AB058BAF2579C8DF0009CBA1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AB058BB02579C8F10009CBA1 /* UIView + Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AB058BB22579C91F0009CBA1 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				AB058BB32579C9310009CBA1 /* ServerManager.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AB058B8A2579C5ED0009CBA1 /* MiddleZapClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB058B9F2579C5F00009CBA1 /* Build configuration list for PBXNativeTarget "MiddleZapClient" */;
+			buildPhases = (
+				AB058B872579C5ED0009CBA1 /* Sources */,
+				AB058B882579C5ED0009CBA1 /* Frameworks */,
+				AB058B892579C5ED0009CBA1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MiddleZapClient;
+			productName = MiddleZapClient;
+			productReference = AB058B8B2579C5ED0009CBA1 /* MiddleZapClient.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AB058B832579C5ED0009CBA1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1170;
+				LastUpgradeCheck = 1170;
+				ORGANIZATIONNAME = "Gabriel Palhares";
+				TargetAttributes = {
+					AB058B8A2579C5ED0009CBA1 = {
+						CreatedOnToolsVersion = 11.7;
+					};
+				};
+			};
+			buildConfigurationList = AB058B862579C5ED0009CBA1 /* Build configuration list for PBXProject "MiddleZapClient" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AB058B822579C5ED0009CBA1;
+			productRefGroup = AB058B8C2579C5ED0009CBA1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AB058B8A2579C5ED0009CBA1 /* MiddleZapClient */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AB058B892579C5ED0009CBA1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB058B9B2579C5F00009CBA1 /* LaunchScreen.storyboard in Resources */,
+				AB058B982579C5F00009CBA1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AB058B872579C5ED0009CBA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB058BB82579C9920009CBA1 /* MessageCell.swift in Sources */,
+				AB058BB12579C8F10009CBA1 /* UIView + Extensions.swift in Sources */,
+				AB058BAC2579C8A50009CBA1 /* Contato.swift in Sources */,
+				AB058BB62579C9730009CBA1 /* ContatoCell.swift in Sources */,
+				AB058BA62579C7ED0009CBA1 /* InitialViewController.swift in Sources */,
+				AB058BA82579C83C0009CBA1 /* ContatosViewController.swift in Sources */,
+				AB058B932579C5ED0009CBA1 /* ViewController.swift in Sources */,
+				AB058BAE2579C8BF0009CBA1 /* Mensagem.swift in Sources */,
+				AB058BAA2579C8730009CBA1 /* ChatViewController.swift in Sources */,
+				AB058BB42579C9310009CBA1 /* ServerManager.swift in Sources */,
+				AB058B8F2579C5ED0009CBA1 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AB058B992579C5F00009CBA1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AB058B9A2579C5F00009CBA1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AB058B9D2579C5F00009CBA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AB058B9E2579C5F00009CBA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AB058BA02579C5F00009CBA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6Z5CB5T6U7;
+				INFOPLIST_FILE = MiddleZapClient/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = palhares.MiddleZapClient;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AB058BA12579C5F00009CBA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6Z5CB5T6U7;
+				INFOPLIST_FILE = MiddleZapClient/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = palhares.MiddleZapClient;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AB058B862579C5ED0009CBA1 /* Build configuration list for PBXProject "MiddleZapClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB058B9D2579C5F00009CBA1 /* Debug */,
+				AB058B9E2579C5F00009CBA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB058B9F2579C5F00009CBA1 /* Build configuration list for PBXNativeTarget "MiddleZapClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB058BA02579C5F00009CBA1 /* Debug */,
+				AB058BA12579C5F00009CBA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AB058B832579C5ED0009CBA1 /* Project object */;
+}

@@ -1,12 +1,11 @@
 //
 //  ContatosViewController.swift
-//  Middlezap
+//  MiddleZapClient
 //
-//  Created by Matheus Damasceno.
-//  Copyright © 2020 Matheus Damasceno. All rights reserved.
+//  Created by Gabriel Palhares on 03/12/20.
+//  Copyright © 2020 Gabriel Palhares. All rights reserved.
+
 //
-
-
 import UIKit
 
 class ContatosViewController: UICollectionViewController, ServerDelegate {
@@ -81,13 +80,13 @@ class ContatosViewController: UICollectionViewController, ServerDelegate {
     }
     
     func errorHappens() {
-          let alert = UIAlertController(title: "Sem conexão", message: "Ocorreu um erro, tente novamente.", preferredStyle: .alert)
-          let cancelar = UIAlertAction(title: "Ok", style: .default) { (_) in
+        let alert = UIAlertController(title: "Sem conexão", message: "Ocorreu um erro, tente novamente.", preferredStyle: .alert)
+        let cancelar = UIAlertAction(title: "Ok", style: .default) { (_) in
             self.navigationController?.popViewController(animated: true)
-          }
-          alert.addAction(cancelar)
-          self.navigationController?.present(alert, animated: true, completion: nil)
-      }
+        }
+        alert.addAction(cancelar)
+        self.navigationController?.present(alert, animated: true, completion: nil)
+    }
     
     @objc func addContato() {
         let alert = UIAlertController(title: "Adicione um Contato", message: "", preferredStyle: .alert)
@@ -131,10 +130,9 @@ class ContatosViewController: UICollectionViewController, ServerDelegate {
             ServerManager.shared.stopChatSession()
         }
     }
-
+    
     // MARK: - Table view data source
-
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return contatos.count
     }
@@ -156,7 +154,7 @@ class ContatosViewController: UICollectionViewController, ServerDelegate {
         vc.controller = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
+    
 }
 
 extension ContatosViewController: UICollectionViewDelegateFlowLayout {
@@ -168,4 +166,3 @@ extension ContatosViewController: UICollectionViewDelegateFlowLayout {
         return 3
     }
 }
-

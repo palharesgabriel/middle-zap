@@ -1,9 +1,9 @@
 //
 //  ContatoCell.swift
-//  Middlezap
+//  MiddleZapClient
 //
-//  Created by Matheus Damasceno.
-//  Copyright © 2020 Matheus Damasceno. All rights reserved.
+//  Created by Gabriel Palhares on 03/12/20.
+//  Copyright © 2020 Gabriel Palhares. All rights reserved.
 //
 
 import UIKit
