@@ -93,7 +93,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @objc func sendMessage() {
         if text.text != "" {
             let mensagem = Mensagem(sender: myself!.nome, receiver: contato!.nome, content: text.text ?? "")
-            let data = "SEND:\(mensagem.sender):\(mensagem.receiver):\(mensagem.content)".data(using: .utf8)
+            let data = "SUB:\(mensagem.sender):\(mensagem.receiver):\(mensagem.content)".data(using: .utf8)
             ServerManager.shared.send(data: data!)
             contato?.mensagens.append(mensagem)
             myself?.mensagens.append(mensagem)

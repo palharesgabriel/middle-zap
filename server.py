@@ -23,13 +23,16 @@ conn = stomp.Connection()
 conn.connect('admin', 'password', wait=True)
 
 class Listener(stomp.ConnectionListener):
+
     def on_error(self, headers, body):
       print('Erro: "%s"' % body)
+
     def on_message(self, headers, body):
       print('Mensagem: "%s"' % body)
       try:
           content = body.split(':')
-          receiver = list(filter(lambda user: user.name == content[1],users))
+          print(content)
+          receiver = list(filter(lambda user: user.name == content[1], users))
           data = body.encode()
           receiver[0].connection.send(data)
           time.sleep(2)
@@ -37,7 +40,7 @@ class Listener(stomp.ConnectionListener):
           print(msg)
 
 
-conn.set_listener('listen',Listener())
+conn.set_listener('listen', Listener())
 
 def connection_handler():
     print('Servidor Aguardando Conexões')
@@ -67,6 +70,7 @@ def connection_handler():
 def data_handler(data: str, connection):
     content = data.split(':')
     print(content)
+
     if content[0] == 'JOIN':
         userOn = create_user(content[1], connection)
         try:
@@ -77,6 +81,7 @@ def data_handler(data: str, connection):
             user.connection.send(f'ON:{userOn.name}'.encode())
         users.append(userOn)
         print(userOn.name + ' conectado')
+
     elif content[0] == 'SEND':
         try:
             filtro = list(filter(lambda user: user.name == content[2],users))
@@ -87,10 +92,16 @@ def data_handler(data: str, connection):
                 brokerContent = ':'.join(content[1:])
                 conn.send(body=f'{brokerContent}', destination=f'/queue/{content[2]}')
                 pass
-            #middleware
+            
         except Exception as msg:
             print(msg)
-
+    
+    elif content[0] == 'SUB':
+        userName = content[1]
+        topicID = content[2]
+        conn.subscribe(destination=f'{topicID}', id=1, ack='auto',headers = {'subscription-type': 'MULTICAST','durable-subscription-name':f'{userName}'})
+        conn.send(body='FODASE'.join(content[1:]), destination = f'{topicID}')
+        print(f'usuário {userName} inscrito no topico {topicID}')
 
 def create_user(name, connection):
     user = User(name,connection)
@@ -112,6 +123,7 @@ while True:
 server.close()
 conn.disconnect()
 
-#join JOIN:NOME
-#send SEND:NOME_ENVIO:NOME_RECEBE:CONTEUDO
+# join: JOIN:NOME
+# send: SEND:NOME_ENVIO:NOME_RECEBE:CONTEUDO
+# subscribe on topic: SUB:NOME:TOPIC_ID
 
