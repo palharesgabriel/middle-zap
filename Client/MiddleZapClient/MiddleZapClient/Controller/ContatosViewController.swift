@@ -115,8 +115,10 @@ class ContatosViewController: UITableViewController, ServerDelegate {
         
         let action = UIAlertAction(title: "Confirmar", style: .default) { (_) in
             let alertTextField = alert.textFields?[0]
-            let group = Grupo(name: (alertTextField?.text)!, messages: [], members: [])
+            let groupName = (alertTextField?.text)!
+            let group = Grupo(name: groupName, messages: [], members: [])
             self.grupos.insert(group, at: 0)
+            ServerManager.shared.subscribe(in: groupName, username: self.usuario!.nome)
             self.tableView.reloadData()
         }
         

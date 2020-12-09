@@ -54,6 +54,17 @@ class ServerManager: NSObject {
         return true
     }
     
+    func subscribe(in topic: String, username: String) {
+        let data = "SUB:\(username):\(topic)".data(using: .utf8)!
+        _ = data.withUnsafeBytes {
+            guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
+                print("Error joining chat")
+                return
+            }
+            outputStream.write(pointer, maxLength: data.count)
+        }
+    }
+    
     func joinChat(username: String) {
         let data = "JOIN:\(username)".data(using: .utf8)!
         _ = data.withUnsafeBytes {

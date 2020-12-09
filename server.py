@@ -8,6 +8,7 @@ class User:
     def __init__(self, name, connection):
         self.name = name
         self.connection = connection
+        self.topics = []
 
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -31,10 +32,19 @@ class Listener(stomp.ConnectionListener):
       print('Mensagem: "%s"' % body)
       try:
           content = body.split(':')
-          print(content)
-          receiver = list(filter(lambda user: user.name == content[0], users))
-          data = body.encode()
-          receiver[0].connection.send(data)
+          print(content)  
+          if content[0] == 'SENDTP':
+              receivers = list(filter(lambda user: content[1] in user.topics, users))
+              print(receivers)
+              print(receivers[0].name)
+              data = body.encode()
+              for receiver in receivers:
+                  receiver.connection.send(data) 
+          else:      
+              receiver = list(filter(lambda user: user.name == content[0], users))
+              data = body.encode()
+              receiver[0].connection.send(data)
+          
           time.sleep(2)
       except Exception as msg:
           print(msg)
@@ -84,7 +94,7 @@ def data_handler(data: str, connection):
 
     elif content[0] == 'SEND':
         try:
-            filtro = list(filter(lambda user: user.name == content[2],users))
+            filtro = list(filter(lambda user: user.name == content[2], users))
             if filtro:
                 user = User(filtro[0].name,filtro[0].connection)
                 send_handler(content, user)
@@ -100,6 +110,10 @@ def data_handler(data: str, connection):
         userName = content[1]
         topicID = content[2]
         conn.subscribe(destination=f'/topic/{topicID}', ack='auto', id=f'{topicID}',headers = {'activemq.subscriptionName': f'{userName}'})
+        user = list(filter(lambda user: user.name == userName, users))
+        print(user)
+        user[0].topics.append(topicID)
+        print(user[0].topics)
         print(f'usuário {userName} inscrito no topico {topicID}')
 
 def create_user(name, connection):
@@ -122,7 +136,6 @@ while True:
 server.close()
 conn.disconnect()
 
-# join: JOIN:NOME
+# join/create_queue: JOIN:NOME
 # send: SEND:NOME_ENVIO:NOME_RECEBE:CONTEUDO
 # subscribe on topic: SUB:NOME:TOPIC_ID
-
