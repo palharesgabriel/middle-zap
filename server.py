@@ -35,14 +35,15 @@ class Listener(stomp.ConnectionListener):
           print(content)  
           if content[0] == 'SENDTP':
               receivers = list(filter(lambda user: content[1] in user.topics, users))
-              print(receivers)
-              print(receivers[0].name)
+            #   print(receivers)
+            #   print(receivers[0].name)
               data = body.encode()
               for receiver in receivers:
                   receiver.connection.send(data) 
           else:      
-              receiver = list(filter(lambda user: user.name == content[0], users))
+              receiver = list(filter(lambda user: user.name == content[1], users))
               data = body.encode()
+              print(receiver[0].name)
               receiver[0].connection.send(data)
           
           time.sleep(2)
