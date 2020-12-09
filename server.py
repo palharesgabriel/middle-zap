@@ -32,7 +32,7 @@ class Listener(stomp.ConnectionListener):
       try:
           content = body.split(':')
           print(content)
-          receiver = list(filter(lambda user: user.name == content[1], users))
+          receiver = list(filter(lambda user: user.name == content[0], users))
           data = body.encode()
           receiver[0].connection.send(data)
           time.sleep(2)
@@ -99,8 +99,7 @@ def data_handler(data: str, connection):
     elif content[0] == 'SUB':
         userName = content[1]
         topicID = content[2]
-        conn.subscribe(destination=f'{topicID}', id=1, ack='auto',headers = {'subscription-type': 'MULTICAST','durable-subscription-name':f'{userName}'})
-        conn.send(body='FODASE'.join(content[1:]), destination = f'{topicID}')
+        conn.subscribe(destination=f'/topic/{topicID}', ack='auto', id=f'{topicID}',headers = {'activemq.subscriptionName': f'{userName}'})
         print(f'usuário {userName} inscrito no topico {topicID}')
 
 def create_user(name, connection):

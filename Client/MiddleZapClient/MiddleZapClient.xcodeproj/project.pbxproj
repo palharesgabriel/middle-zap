@@ -20,6 +20,8 @@
 		AB058BB42579C9310009CBA1 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058BB32579C9310009CBA1 /* ServerManager.swift */; };
 		AB058BB62579C9730009CBA1 /* ContatoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058BB52579C9730009CBA1 /* ContatoCell.swift */; };
 		AB058BB82579C9920009CBA1 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058BB72579C9920009CBA1 /* MessageCell.swift */; };
+		AB058BC0258052EC0009CBA1 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058BBF258052EC0009CBA1 /* TitleView.swift */; };
+		AB058BC225805F750009CBA1 /* Grupo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058BC125805F750009CBA1 /* Grupo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		AB058BB32579C9310009CBA1 /* ServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
 		AB058BB52579C9730009CBA1 /* ContatoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContatoCell.swift; sourceTree = "<group>"; };
 		AB058BB72579C9920009CBA1 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		AB058BBF258052EC0009CBA1 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		AB058BC125805F750009CBA1 /* Grupo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grupo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 			children = (
 				AB058BB52579C9730009CBA1 /* ContatoCell.swift */,
 				AB058BB72579C9920009CBA1 /* MessageCell.swift */,
+				AB058BBF258052EC0009CBA1 /* TitleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -108,6 +113,7 @@
 			children = (
 				AB058BAB2579C8A50009CBA1 /* Contato.swift */,
 				AB058BAD2579C8BF0009CBA1 /* Mensagem.swift */,
+				AB058BC125805F750009CBA1 /* Grupo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -209,6 +215,8 @@
 				AB058BAA2579C8730009CBA1 /* ChatViewController.swift in Sources */,
 				AB058BB42579C9310009CBA1 /* ServerManager.swift in Sources */,
 				AB058B8F2579C5ED0009CBA1 /* AppDelegate.swift in Sources */,
+				AB058BC0258052EC0009CBA1 /* TitleView.swift in Sources */,
+				AB058BC225805F750009CBA1 /* Grupo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -75,7 +75,6 @@ class InitialViewController: UIViewController, ServerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = #colorLiteral(red: 0.1957894266, green: 0.1946322322, blue: 0.196683228, alpha: 1)
-        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.barStyle = .black
         setupViews()
         setupConstraints()
@@ -89,7 +88,7 @@ class InitialViewController: UIViewController, ServerDelegate {
     
     @objc func conectar() {
         ServerManager.shared.joinChat(username: preencheNome.text ?? "")
-        let vc = ContatosViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let vc = ContatosViewController(style: .plain)
         vc.usuario = Contato(nome: preencheNome.text!, mensagens: [])
         self.navigationController?.pushViewController(vc, animated: true)
     }

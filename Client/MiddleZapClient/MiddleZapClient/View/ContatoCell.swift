@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContatoCell: UICollectionViewCell {
+class ContatoCell: UITableViewCell {
     let avatar: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "user")
@@ -43,10 +43,10 @@ class ContatoCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        //self.layer.cornerRadius = 10
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         setupViews()
         setupConstraints()
     }
