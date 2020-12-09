@@ -90,6 +90,9 @@ class InitialViewController: UIViewController, ServerDelegate {
         ServerManager.shared.joinChat(username: preencheNome.text ?? "")
         let vc = ContatosViewController(style: .plain)
         vc.usuario = Contato(nome: preencheNome.text!, mensagens: [])
+        let backItem = UIBarButtonItem()
+        backItem.title = "Sair"
+        navigationItem.backBarButtonItem = backItem
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

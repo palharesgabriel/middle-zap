@@ -16,7 +16,6 @@ class ContatosViewController: UITableViewController, ServerDelegate {
     var chatController: ChatViewController?
     let switchButton = UISwitch()
     
-    
     override func viewDidLoad() {
         switchButton.isOn = true
         switchButton.addTarget(self, action: #selector(statusChange), for: .valueChanged)
@@ -27,8 +26,6 @@ class ContatosViewController: UITableViewController, ServerDelegate {
         self.navigationController?.navigationBar.barStyle = .black
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addChat))
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: switchButton)
-
     }
     
     
@@ -217,6 +214,22 @@ class ContatosViewController: UITableViewController, ServerDelegate {
         return 30
     }
     
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0
+        } else {
+            return 30
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == 1 {
+            return switchButton
+        } else {
+            return nil
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let titleView = TitleView()
         
@@ -244,6 +257,6 @@ class ContatosViewController: UITableViewController, ServerDelegate {
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
             
-        } 
+        }
     }
 }
