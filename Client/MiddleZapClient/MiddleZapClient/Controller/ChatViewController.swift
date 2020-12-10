@@ -44,7 +44,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var group: Grupo?
     var myself: Contato?
     var controller: ContatosViewController?
-    
+
     lazy var table: UITableView = {
         let table = UITableView()
         table.backgroundColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1)
@@ -85,6 +85,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationItem.title = contato?.nome
+        
+        if let group = self.group {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: String(group.messages.count), style: .plain, target: self, action: #selector(tapped))
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "\(contato?.mensagens.count ?? .zero)", style: .plain, target: self, action: #selector(tapped))
+        }
+        
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         table.register(MessageCell.self, forCellReuseIdentifier: "cell")
@@ -118,6 +125,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let index = IndexPath(row: group.messages.count - 1, section: 0)
                 table.scrollToRow(at: index, at: .top, animated: true)
                 text.text = ""
+                navigationItem.rightBarButtonItem = UIBarButtonItem(title: String(group.messages.count), style: .plain, target: self, action: #selector(tapped))
+
             } else {
                 let mensagem = Mensagem(sender: myself!.nome, receiver: contato!.nome, content: text.text ?? "")
                 let data = "SEND:\(mensagem.sender):\(mensagem.receiver):\(mensagem.content)".data(using: .utf8)
@@ -129,8 +138,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let index = IndexPath(row: (contato?.mensagens.count)! - 1, section: 0)
                 table.scrollToRow(at: index, at: .top, animated: true)
                 text.text = ""
+                navigationItem.rightBarButtonItem = UIBarButtonItem(title: "\(contato?.mensagens.count ?? .zero)", style: .plain, target: self, action: #selector(tapped))
             }
         }
+    }
+    
+    @objc
+    func tapped() {
+        //
     }
     
     func setupViews() {
