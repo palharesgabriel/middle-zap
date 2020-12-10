@@ -9,13 +9,15 @@
 import Foundation
 
 class Mensagem {
+    let code: String?
     let sender: String
     let receiver: String
     let content: String
     
-    init(sender: String, receiver: String, content: String) {
+    init(sender: String, receiver: String, content: String, code: String? = nil) {
         self.sender = sender
         self.receiver = receiver
         self.content = content
+        self.code = code
     }
 }

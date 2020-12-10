@@ -144,7 +144,10 @@ extension ServerManager: StreamDelegate {
             return nil
         }
         
-        return Mensagem(sender: stringArray[0], receiver: stringArray[1], content: stringArray[2])
-        
+        if stringArray.contains("SENDTP") {
+            return Mensagem(sender: stringArray[1], receiver: stringArray[2], content: stringArray[3], code: stringArray[0])
+        } else {
+            return Mensagem(sender: stringArray[0], receiver: stringArray[1], content: stringArray[2])
+        }
     }
 }

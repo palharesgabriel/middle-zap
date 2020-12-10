@@ -27,7 +27,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if let group = self.group {
             cell.mensagem.text = group.messages[indexPath.row].content
-            cell.sender.text = group.messages[indexPath.row].receiver
+            cell.sender.text = group.messages[indexPath.row].sender
             cell.isMeSending = cell.sender.text == myself?.nome
             cell.backgroundColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1)
         } else {
@@ -84,12 +84,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationItem.title = contato?.nome
         
         if let group = self.group {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: String(group.messages.count), style: .plain, target: self, action: #selector(tapped))
+            self.navigationItem.title = group.name
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "\(contato?.mensagens.count ?? .zero)", style: .plain, target: self, action: #selector(tapped))
+            self.navigationItem.title = contato?.nome
         }
         
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -115,8 +116,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         if text.text != "" {
             
             if let group = self.group {
-                let mensagem = Mensagem(sender: "SENDTP", receiver: group.name, content: text.text ?? "")
-                let data = "\(mensagem.sender):\(mensagem.receiver):\(mensagem.content)".data(using: .utf8)
+                let mensagem = Mensagem(sender: myself?.nome ?? "", receiver: group.name, content: text.text ?? "")
+                let data = "SENDTP:\(mensagem.sender):\(mensagem.receiver):\(mensagem.content)".data(using: .utf8)
                 ServerManager.shared.send(data: data!)
                 group.messages.append(mensagem)
                 myself?.mensagens.append(mensagem)

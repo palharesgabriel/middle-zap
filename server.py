@@ -33,7 +33,7 @@ class Listener(stomp.ConnectionListener):
       try:
           content = body.split(':')
           if content[0] == 'SENDTP':
-              receivers = list(filter(lambda user: content[1] in user.topics, users))
+              receivers = list(filter(lambda user: content[2] in user.topics, users))
               print(f'Enviando dados para {receivers[0].name}')
               data = body.encode()
               for receiver in receivers:
@@ -118,12 +118,13 @@ def data_handler(data: str, connection):
 
         except Exception as msg:
             print(msg)
-            
+
     elif content[0] == 'SENDTP':
-        topicID = content[1]
-        message = content[2]
+        sender = content[1]
+        topicID = content[2]
+        message = content[3]
         try:
-            conn.send(body=f'SENDTP:{topicID}:{message}', destination=f'/topic/{topicID}')
+            conn.send(body=f'SENDTP:{sender}:{topicID}:{message}', destination=f'/topic/{topicID}')
 
         except Exception as msg:
             print(msg)
@@ -148,7 +149,9 @@ while True:
 server.close()
 conn.disconnect()
 
-# join/create_queue: JOIN:NOME
-# send: SEND:NOME_ENVIO:NOME_RECEBE:CONTEUDO
-# subscribe on topic: SUB:NOME:TOPIC_ID
-# send topic message: SENDTP:TOPIC_ID:MESSAGE
+# Protocolo de comunicação
+
+# join/create_queue: JOIN:USER
+# send queue message: SEND:SENDER:RECEIVER:MESSAGE
+# subscribe on topic: SUB:USER:TOPIC_ID
+# send topic message: SENDTP:SENDER:TOPIC_ID:SENDER:MESSAGE

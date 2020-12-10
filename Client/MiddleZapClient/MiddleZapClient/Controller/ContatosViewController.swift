@@ -50,7 +50,7 @@ class ContatosViewController: UITableViewController, ServerDelegate {
     
     func received(message: Mensagem) {
         
-        if message.sender == "SENDTP" {
+        if message.code == "SENDTP" {
             let group = self.grupos.filter({ $0.name == message.receiver }).first
             if let group = group {
                 group.messages.append(message)
