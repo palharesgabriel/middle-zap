@@ -49,19 +49,39 @@ class ContatosViewController: UITableViewController, ServerDelegate {
     }
     
     func received(message: Mensagem) {
-        let contato = self.contatos.filter({ $0.nome == message.sender }).first
-        if let contato = contato {
-            contato.mensagens.append(message)
+        
+        if message.sender == "SENDTP" {
+            let group = self.grupos.filter({ $0.name == message.receiver }).first
+            if let group = group {
+                group.messages.append(message)
+            } else {
+                let group = Grupo(name: message.receiver, messages: [message], members: [])
+                self.grupos.insert(group, at: 0)
+            }
+            
+            self.chatController?.table.reloadData()
+            if let mensagens = group?.messages.count {
+                self.chatController?.table.scrollToRow(at: IndexPath(row: mensagens - 1, section: 0), at: .top, animated: true)
+            }
+            self.tableView.reloadData()
+            
         } else {
-            let contato = Contato(nome: message.sender, mensagens: [message])
-            contato.status = true
-            self.contatos.insert(contato, at: 0)
+            let contato = self.contatos.filter({ $0.nome == message.sender }).first
+            if let contato = contato {
+                contato.mensagens.append(message)
+            } else {
+                let contato = Contato(nome: message.sender, mensagens: [message])
+                contato.status = true
+                self.contatos.insert(contato, at: 0)
+            }
+            
+            self.chatController?.table.reloadData()
+            if let mensagens = contato?.mensagens.count {
+                self.chatController?.table.scrollToRow(at: IndexPath(row: mensagens - 1, section: 0), at: .top, animated: true)
+            }
+            self.tableView.reloadData()
+            
         }
-        self.chatController?.table.reloadData()
-        if let mensagens = contato?.mensagens.count {
-            self.chatController?.table.scrollToRow(at: IndexPath(row: mensagens - 1, section: 0), at: .top, animated: true)
-        }
-        self.tableView.reloadData()
     }
     
     func setStatus(status: Bool, contato: String) {
@@ -187,13 +207,13 @@ class ContatosViewController: UITableViewController, ServerDelegate {
         
         if indexPath.section == 0 {
             cell.backgroundColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
-            cell.nome.text = contatos[indexPath.item].nome
-            cell.mensagem.text = contatos[indexPath.item].mensagens.count == 0 ? "Sem mensagens" : contatos[indexPath.row].mensagens.last?.content
-            cell.status.backgroundColor = contatos[indexPath.item].status == true ? #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1) : #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+            cell.nome.text = contatos[indexPath.row].nome
+            cell.mensagem.text = contatos[indexPath.row].mensagens.count == 0 ? "Sem mensagens" : contatos[indexPath.row].mensagens.last?.content
+            cell.status.backgroundColor = contatos[indexPath.row].status == true ? #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1) : #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
         } else {
             cell.backgroundColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
-            cell.nome.text = "GRUPAO"
-            cell.mensagem.text = "FALA RAPEIZA"
+            cell.nome.text = grupos[indexPath.row].name
+            cell.mensagem.text = grupos[indexPath.row].messages.count == 0 ? "Sem mensagens" : grupos[indexPath.row].messages.last?.content
             cell.status.backgroundColor = #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1)
         }
         return cell
@@ -202,9 +222,13 @@ class ContatosViewController: UITableViewController, ServerDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ChatViewController()
         self.chatController = vc
-        vc.contato = contatos[indexPath.item]
         vc.myself = usuario
         vc.controller = self
+        if indexPath.section == 0 {
+            vc.contato = contatos[indexPath.row]
+        } else {
+            vc.group = grupos[indexPath.item]
+        }
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

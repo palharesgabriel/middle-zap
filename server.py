@@ -35,8 +35,8 @@ class Listener(stomp.ConnectionListener):
           print(content)  
           if content[0] == 'SENDTP':
               receivers = list(filter(lambda user: content[1] in user.topics, users))
-            #   print(receivers)
-            #   print(receivers[0].name)
+              print(receivers)
+              print(receivers[0].name)
               data = body.encode()
               for receiver in receivers:
                   receiver.connection.send(data) 
@@ -140,3 +140,4 @@ conn.disconnect()
 # join/create_queue: JOIN:NOME
 # send: SEND:NOME_ENVIO:NOME_RECEBE:CONTEUDO
 # subscribe on topic: SUB:NOME:TOPIC_ID
+# send topic message: SENDTP:TOPIC_ID:MESSAGE

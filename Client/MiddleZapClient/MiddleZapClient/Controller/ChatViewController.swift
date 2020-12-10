@@ -15,19 +15,33 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contato?.mensagens.count ?? 0
+        if let group = self.group {
+            return group.messages.count
+        } else {
+            return contato?.mensagens.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MessageCell
-        cell.mensagem.text = contato?.mensagens[indexPath.row].content
-        cell.sender.text = contato?.mensagens[indexPath.row].sender
-        cell.isMeSending = cell.sender.text == myself?.nome
-        cell.backgroundColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1)
+        
+        if let group = self.group {
+            cell.mensagem.text = group.messages[indexPath.row].content
+            cell.sender.text = group.messages[indexPath.row].receiver
+            cell.isMeSending = cell.sender.text == myself?.nome
+            cell.backgroundColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1)
+        } else {
+            cell.mensagem.text = contato?.mensagens[indexPath.row].content
+            cell.sender.text = contato?.mensagens[indexPath.row].sender
+            cell.isMeSending = cell.sender.text == myself?.nome
+            cell.backgroundColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1)
+        }
+        
         return cell
     }
     
     var contato: Contato?
+    var group: Grupo?
     var myself: Contato?
     var controller: ContatosViewController?
     
@@ -92,16 +106,30 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc func sendMessage() {
         if text.text != "" {
-            let mensagem = Mensagem(sender: myself!.nome, receiver: contato!.nome, content: text.text ?? "")
-            let data = "SEND:\(mensagem.sender):\(mensagem.receiver):\(mensagem.content)".data(using: .utf8)
-            ServerManager.shared.send(data: data!)
-            contato?.mensagens.append(mensagem)
-            myself?.mensagens.append(mensagem)
-            table.reloadData()
-            controller?.tableView.reloadData()
-            let index = IndexPath(row: (contato?.mensagens.count)! - 1, section: 0)
-            table.scrollToRow(at: index, at: .top, animated: true)
-            text.text = ""
+            
+            if let group = self.group {
+                let mensagem = Mensagem(sender: "SENDTP", receiver: group.name, content: text.text ?? "")
+                let data = "\(mensagem.sender):\(mensagem.receiver):\(mensagem.content)".data(using: .utf8)
+                ServerManager.shared.send(data: data!)
+                group.messages.append(mensagem)
+                myself?.mensagens.append(mensagem)
+                table.reloadData()
+                controller?.tableView.reloadData()
+                let index = IndexPath(row: group.messages.count - 1, section: 0)
+                table.scrollToRow(at: index, at: .top, animated: true)
+                text.text = ""
+            } else {
+                let mensagem = Mensagem(sender: myself!.nome, receiver: contato!.nome, content: text.text ?? "")
+                let data = "SEND:\(mensagem.sender):\(mensagem.receiver):\(mensagem.content)".data(using: .utf8)
+                ServerManager.shared.send(data: data!)
+                contato?.mensagens.append(mensagem)
+                myself?.mensagens.append(mensagem)
+                table.reloadData()
+                controller?.tableView.reloadData()
+                let index = IndexPath(row: (contato?.mensagens.count)! - 1, section: 0)
+                table.scrollToRow(at: index, at: .top, animated: true)
+                text.text = ""
+            }
         }
     }
     
