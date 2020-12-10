@@ -32,11 +32,9 @@ class Listener(stomp.ConnectionListener):
       print('Mensagem: "%s"' % body)
       try:
           content = body.split(':')
-          print(content)  
           if content[0] == 'SENDTP':
               receivers = list(filter(lambda user: content[1] in user.topics, users))
-              print(receivers)
-              print(receivers[0].name)
+              print(f'Enviando dados para {receivers[0].name}')
               data = body.encode()
               for receiver in receivers:
                   receiver.connection.send(data) 
@@ -110,12 +108,25 @@ def data_handler(data: str, connection):
     elif content[0] == 'SUB':
         userName = content[1]
         topicID = content[2]
-        conn.subscribe(destination=f'/topic/{topicID}', ack='auto', id=f'{topicID}',headers = {'activemq.subscriptionName': f'{userName}'})
-        user = list(filter(lambda user: user.name == userName, users))
-        print(user)
-        user[0].topics.append(topicID)
-        print(user[0].topics)
-        print(f'usuário {userName} inscrito no topico {topicID}')
+        try:
+            conn.subscribe(destination=f'/topic/{topicID}', ack='auto', id=f'{topicID}',headers = {'activemq.subscriptionName': f'{userName}'})
+            user = list(filter(lambda user: user.name == userName, users))
+            print(user)
+            user[0].topics.append(topicID)
+            print(user[0].topics)
+            print(f'usuário {userName} inscrito no topico {topicID}')
+
+        except Exception as msg:
+            print(msg)
+            
+    elif content[0] == 'SENDTP':
+        topicID = content[1]
+        message = content[2]
+        try:
+            conn.send(body=f'SENDTP:{topicID}:{message}', destination=f'/topic/{topicID}')
+
+        except Exception as msg:
+            print(msg)
 
 def create_user(name, connection):
     user = User(name,connection)
