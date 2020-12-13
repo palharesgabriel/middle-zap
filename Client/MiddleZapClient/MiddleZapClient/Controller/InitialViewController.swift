@@ -32,13 +32,6 @@ class InitialViewController: UIViewController, ServerDelegate {
         statusConnection = false
     }
     
-    let imagem: UIImageView = {
-        let image = UIImageView(image: #imageLiteral(resourceName: "friends"))
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFit
-        return image
-    }()
-    
     let initialBG: UIView = {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
@@ -97,26 +90,21 @@ class InitialViewController: UIViewController, ServerDelegate {
     }
     
     func setupViews() {
-        self.view.addSubviews(views: [initialBG, imagem])
+        self.view.addSubviews(views: [initialBG])
         initialBG.addSubviews(views: [preencheNome, confirmar])
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            imagem.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 32),
-            imagem.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            imagem.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
-            imagem.bottomAnchor.constraint(equalTo: self.initialBG.topAnchor, constant: -16),
-            
-            initialBG.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 24),
+            initialBG.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             initialBG.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            initialBG.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/1.8),
-            initialBG.heightAnchor.constraint(equalToConstant: 100),
+            initialBG.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.9),
+            initialBG.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),
             
-            preencheNome.topAnchor.constraint(equalTo: initialBG.topAnchor, constant: 16),
+            preencheNome.centerYAnchor.constraint(equalTo: initialBG.centerYAnchor, constant: -16),
             preencheNome.centerXAnchor.constraint(equalTo: initialBG.centerXAnchor),
-            preencheNome.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/2.5),
-            preencheNome.heightAnchor.constraint(equalToConstant: 30),
+            preencheNome.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/1.5),
+            preencheNome.heightAnchor.constraint(equalToConstant: 40),
             
             confirmar.topAnchor.constraint(equalTo: preencheNome.bottomAnchor, constant: 8),
             confirmar.centerXAnchor.constraint(equalTo: initialBG.centerXAnchor),
