@@ -4,13 +4,6 @@ import threading
 import stomp
 import time
 
-class User:
-    def __init__(self, name, connection):
-        self.name = name
-        self.connection = connection
-        self.topics = []
-
-
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
@@ -22,6 +15,12 @@ server.bind((ip,porta))
 server.listen()
 conn = stomp.Connection()
 conn.connect('admin', 'password', wait=True)
+
+class User:
+    def __init__(self, name, connection):
+        self.name = name
+        self.connection = connection
+        self.topics = []
 
 class Listener(stomp.ConnectionListener):
 
@@ -52,7 +51,7 @@ class Listener(stomp.ConnectionListener):
 conn.set_listener('listen', Listener())
 
 def connection_handler():
-    print('Servidor Aguardando Conexões')
+    print('Server Aguardando Conexões')
     while True:
         inputs,_,_ = select.select(connections,[],[],2)
         for con in inputs:
@@ -149,7 +148,7 @@ while True:
 server.close()
 conn.disconnect()
 
-# Protocolo de comunicação
+# Protocolo de comunicação - comandos
 
 # join/create_queue: JOIN:USER
 # send queue message: SEND:SENDER:RECEIVER:MESSAGE
